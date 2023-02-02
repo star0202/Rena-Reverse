@@ -1,5 +1,6 @@
-from .register import RegisterView
+from .register import RegisterView, UnRegisterView
 
 __all__ = [
-    "RegisterView"
+    "RegisterView",
+    "UnRegisterView"
 ]
