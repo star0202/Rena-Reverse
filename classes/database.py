@@ -18,14 +18,14 @@ class Database:
         self.cursor = await self.conn.cursor()
         return self
 
-    async def insert(self, table: str, value: tuple[int, str]):
+    async def insert(self, table: str, value: str):
         await self.cursor.execute(f"INSERT INTO {table} VALUES {value}")
 
     async def select(self, table: str, value_id: int) -> tuple[int, str] | None:
         await self.cursor.execute(f"SELECT * FROM {table} WHERE id={value_id}")
         return await self.cursor.fetchone()
 
-    async def update(self, table: str, value_id: int, value: tuple[int, str]):
+    async def update(self, table: str, value_id: int, value: str):
         await self.cursor.execute(f"UPDATE {table} SET {value} WHERE id={value_id}")
 
     async def delete(self, table: str, value_id: int):
