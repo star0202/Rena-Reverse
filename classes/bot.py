@@ -24,9 +24,10 @@ class Bot(commands.Bot):
         self.session = uuid4()
         self.crypt = AESCipher(getenv("TOKEN"))
         self.db = Database
-        for filename in listdir("functions"):
-            if filename.endswith(".py"):
-                self.load_cog(f"functions.{filename[:-3]}")
+        for cog_dir in ["functions", "rena/functions"]:
+            for filename in listdir(cog_dir):
+                if filename.endswith(".py"):
+                    self.load_cog(f"{cog_dir.replace('/', '.')}.{filename[:-3]}")
         self.logger.info(f"{len(self.extensions)} extensions are completely loaded")
 
     def load_cog(self, cog: str):

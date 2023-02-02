@@ -17,7 +17,11 @@ DATABASE_INIT: Final[list[dict[str, str | dict[str, str]]]] = [  # 데이터베�
         "name": "User",
         "columns": {
             "id": "INTEGER",
-            "data": "TEXT"
+            "school": "TEXT",
+            "grade": "INTEGER",
+            "room": "INTEGER",
+            "private": "BOOLEAN",
+            "ephemeral": "BOOLEAN"
         }
     }
 ]

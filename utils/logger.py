@@ -23,7 +23,7 @@ class StreamFormatter(Formatter):
         levelname_color = COLORS[record.levelname] + record.levelname + RESET + " " * space
         record.levelname = levelname_color
 
-        space = 22 - len(record.name)
+        space = 23 - len(record.name)
         if space < 0:
             space = 0
         record.name = CYAN + record.name + RESET + " " * space
@@ -47,7 +47,7 @@ def setup_logging():
                                delay=True)
     errorhandler.setLevel(ERROR)
     basicConfig(
-        format="%(asctime)s.%(msecs)03d %(levelname)-8s %(name)-22s: %(message)s",
+        format="%(asctime)s.%(msecs)03d %(levelname)-8s %(name)-23s: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
         handlers=[filehandler, errorhandler, handler], level=DEBUG
     )
