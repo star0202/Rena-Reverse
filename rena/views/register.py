@@ -12,7 +12,7 @@ class RegisterView(View):
 
     @button(label="확인", style=ButtonStyle.green, emoji="✅")
     async def confirm(self, _, interaction: Interaction):
-        await self.bot.db.insert("User", (interaction.user.id, "", 0, 0, True, True))
+        await self.bot.db.insert("User", (interaction.user.id, "", "", 0, 0, True, True))
         await interaction.response.edit_message(content="성공적으로 가입 됐어! 레나가 학교생활을 도와줄게!", embed=None, view=None)
 
     @button(label="취소", style=ButtonStyle.red, emoji="✖️")

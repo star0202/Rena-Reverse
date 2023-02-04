@@ -1,8 +1,8 @@
 from .register import RegisterView, UnRegisterView
-from .school import SearchView
+from .school import SelectView
 
 __all__ = [
     "RegisterView",
     "UnRegisterView",
-    "SearchView"
+    "SelectView"
 ]
