@@ -6,7 +6,7 @@ from discord.ext.commands import Cog
 from classes import Bot
 from rena import COLOR
 from utils import slash_command
-from rena.utils import private_bool
+from rena.utils import private_bool, ephemeral_check
 
 logger = getLogger(__name__)
 
@@ -32,7 +32,7 @@ class UserCog(Cog):
 
 -----
 """)
-        await ctx.respond(embed=embed, ephemeral=bool(data[4]))
+        await ctx.respond(embed=embed, ephemeral=await ephemeral_check(data=data))
 
 
 def setup(bot: Bot):
