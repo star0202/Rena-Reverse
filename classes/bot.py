@@ -7,6 +7,7 @@ from uuid import uuid4
 from discord import ApplicationContext, DiscordException, Embed, ExtensionFailed, Game, Status
 from discord.ext import commands
 from discord.ext.commands import Context
+from neispy import Neispy
 
 from config import BAD, STATUS
 from constants import OPTION_TYPES, DATABASE_INIT
@@ -23,6 +24,7 @@ class Bot(commands.Bot):
         self.start_time = time()
         self.session = uuid4()
         self.crypt = AESCipher(getenv("TOKEN"))
+        self.neis = Neispy(KEY=getenv("NEIS_KEY"))
         self.db = Database
         for cog_dir in ["functions", "rena/functions"]:
             for filename in listdir(cog_dir):
