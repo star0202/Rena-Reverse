@@ -21,8 +21,8 @@ class Setting(Cog):
             ephemeral: Option(bool, description="자기 자신에게만 보이게 할지 여부입니다.")
     ):
         if await self.bot.db.select("User", ctx.user.id):
-            await self.bot.db.update("User", ctx.user.id, "private", private)
-            await self.bot.db.update("User", ctx.user.id, "ephemeral", ephemeral)
+            await self.bot.db.update("User", "private", private, ctx.user.id)
+            await self.bot.db.update("User", "ephemeral", ephemeral, ctx.user.id)
             await ctx.respond("성공적으로 수정했어! 다음부터는 이 설정값으로 알려줄게!", ephemeral=True)
         else:
             await ctx.respond("가입이 되어있지 않다는 메세지", ephemeral=True)  # 확인 필요
