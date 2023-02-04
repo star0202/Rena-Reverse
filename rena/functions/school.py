@@ -32,7 +32,7 @@ class School(Cog):
             school_name: Option(str, description="설정할 학교 이름입니다."),
             grade: Option(int, description="설정할 학년입니다."),
             room: Option(int, description="설정할 반입니다.")
-            ):
+    ):
         try:
             schools = await self.bot.neis.schoolInfo(SCHUL_NM=school_name)
             embed = school_embed(schools, 0)

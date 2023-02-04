@@ -5,8 +5,8 @@ from discord.ext.commands import Cog
 
 from classes import Bot
 from rena import COLOR
-from utils import slash_command
 from rena.utils import private_bool, ephemeral_check
+from utils import slash_command
 
 logger = getLogger(__name__)
 

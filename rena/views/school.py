@@ -1,8 +1,8 @@
 from typing import Optional
 
+from discord import Interaction
 from discord.enums import ButtonStyle
 from discord.ui import View, button
-from discord import Interaction
 
 from classes import Database
 from rena.utils import school_embed
