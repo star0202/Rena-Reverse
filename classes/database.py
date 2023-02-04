@@ -25,8 +25,8 @@ class Database:
         await self.cursor.execute(f"SELECT * FROM {table} WHERE id={value_id}")
         return await self.cursor.fetchone()
 
-    async def update(self, table: str, value_id: int, value: str):
-        await self.cursor.execute(f"UPDATE {table} SET {value} WHERE id={value_id}")
+    async def update(self, table: str, value_id: int, column: str, value: str):
+        await self.cursor.execute(f"UPDATE {table} SET {column}={value} WHERE id={value_id}")
 
     async def delete(self, table: str, value_id: int):
         await self.cursor.execute(f"DELETE FROM {table} WHERE id={value_id}")
