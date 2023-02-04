@@ -17,7 +17,7 @@ async def is_registered(user_id: int, db: Database) -> bool:
 
 async def ephemeral_check(
         user_id: Optional[int] = None, data: Optional[tuple[int, str]] = None, db: Optional[Database] = None
-        ) -> bool:
+) -> bool:
     if (user_id and db) or data:
         data_returned = data or await db.select("User", user_id)
         return bool(data_returned[5])
