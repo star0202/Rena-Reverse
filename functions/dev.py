@@ -37,7 +37,7 @@ class Dev(Cog):
     @slash_command(guild_ids=DEV_GUILD_ID)
     async def reload_ext(self, ctx: ApplicationContext, ext_name: Option(str)):
         self.bot.unload_extension(ext_name)
-        self.bot.load_extension(f"functions.{ext_name}")
+        self.bot.load_extension(ext_name)
         await ctx.respond(f"{ext_name}.py reloaded", ephemeral=True)
 
     @slash_command(guild_ids=DEV_GUILD_ID)
