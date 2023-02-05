@@ -36,7 +36,7 @@ class UserCog(Cog):
 -----
 """, inline=False)
             else:
-                embed.add_field(name="🏫 내 학교 정보", value=f"""
+                embed.add_field(name="🏫 내 학교 정보", value="""
                 🏫 내 학교 정보
 **[학교]** 비공개
 **[학년/반]** 비공개
