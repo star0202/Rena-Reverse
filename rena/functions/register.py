@@ -14,7 +14,6 @@ logger = getLogger(__name__)
 class Register(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
-        self.neis = self.bot.neis
 
     @slash_command(name="가입", description="레나에 가입합니다.")
     async def register(self, ctx: ApplicationContext):
