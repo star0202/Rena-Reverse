@@ -24,6 +24,27 @@ class UserCog(Cog):
         embed = Embed(title=ctx.user.name, color=COLOR)
         embed.set_author(name="프로필")
         embed.set_thumbnail(url=ctx.user.display_avatar.url)
+        if data[1] and data[2]:
+            if data[5]:
+                school = await self.bot.neis.schoolInfo(ATPT_OFCDC_SC_CODE=data[1], SD_SCHUL_CODE=data[2])
+                embed.add_field(name="🏫 내 학교 정보", value=f"""
+        **[학교]** {school[0].SCHUL_NM}
+**[학년/반]** {data[3]}학년 {data[4]}반
+
+> `/학교 설정` 으로 내 학교 정보를 고칠 수 있어요.
+
+-----
+""", inline=False)
+            else:
+                embed.add_field(name="🏫 내 학교 정보", value=f"""
+                🏫 내 학교 정보
+**[학교]** 비공개
+**[학년/반]** 비공개
+
+> `/학교 설정` 으로 내 학교 정보를 고칠 수 있어요.
+
+-----
+""", inline=False)
         embed.add_field(name="🔒 공개 여부 설정", value=f"""
         **[ 내 학교 공개하기 ]** {private_bool(data[4])}
 **[ 명령어 답변 공개하기 ]** {private_bool(data[5])}
