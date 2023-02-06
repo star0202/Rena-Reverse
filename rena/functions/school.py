@@ -5,7 +5,7 @@ from discord.ext.commands import Cog
 from neispy.error import DataNotFound
 
 from classes import Bot
-from rena.utils import school_embed, ephemeral_check, is_registered
+from rena.utils import school_embed, ephemeral_check
 from rena.views import SelectView
 
 logger = getLogger(__name__)

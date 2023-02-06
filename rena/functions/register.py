@@ -6,7 +6,6 @@ from discord.ext.commands import Cog
 from classes import Bot
 from rena import COLOR
 from rena.views import RegisterView, UnRegisterView
-from rena.utils import is_registered
 from utils import slash_command
 
 logger = getLogger(__name__)
