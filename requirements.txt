@@ -4,6 +4,6 @@ python-dotenv~=0.21.0
 pytz~=2022.6
 pycryptodome~=3.17.0
 aiosqlite~=0.18.0
-mypy~=0.991
+mypy~=1.0
 types-pytz~=2022.7.1.0
 neispy~=4.2.0
