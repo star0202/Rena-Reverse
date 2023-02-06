@@ -10,11 +10,6 @@ def private_bool(value: Any) -> str:
         return "⭕ 공개"
 
 
-async def is_registered(user_id: int, db: Database) -> bool:
-    data = await db.select("User", user_id)
-    return bool(data)
-
-
 async def ephemeral_check(
         user_id: Optional[int] = None, data: Optional[tuple[int, str]] = None, db: Optional[Database] = None
 ) -> bool:
