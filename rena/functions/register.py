@@ -6,6 +6,7 @@ from discord.ext.commands import Cog
 from classes import Bot
 from rena import COLOR
 from rena.views import RegisterView, UnRegisterView
+from rena.utils import is_registered
 from utils import slash_command
 
 logger = getLogger(__name__)
@@ -17,7 +18,7 @@ class Register(Cog):
 
     @slash_command(name="가입", description="레나에 가입합니다.")
     async def register(self, ctx: ApplicationContext):
-        if await self.bot.db.select("User", ctx.user.id):
+        if await is_registered(ctx.user.id, db=self.bot.db):
             await ctx.respond("이미 가입되어있다구!!", ephemeral=True)
             return
         embed = Embed(title="레나 서비스 약관", description="""
@@ -31,7 +32,7 @@ class Register(Cog):
 
     @slash_command(name="탈퇴", description="레나에 탈퇴합니다.")
     async def unregister(self, ctx: ApplicationContext):
-        if not await self.bot.db.select("User", ctx.user.id):
+        if not await is_registered(ctx.user.id, db=self.bot.db):
             await ctx.respond("가입을해야 탈퇴도하지!! `/가입`명령어를 사용해서 가입해줘!", ephemeral=True)
             return
         embed = Embed(title="탈퇴", description="**정말 탈퇴하시겠습니까?**\n탈퇴하시면 레나에 가입되신 모든 정보가 지체없이 파기됩니다.", color=COLOR)

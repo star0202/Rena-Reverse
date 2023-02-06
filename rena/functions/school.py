@@ -5,7 +5,7 @@ from discord.ext.commands import Cog
 from neispy.error import DataNotFound
 
 from classes import Bot
-from rena.utils import school_embed, ephemeral_check
+from rena.utils import school_embed, ephemeral_check, is_registered
 from rena.views import SelectView
 
 logger = getLogger(__name__)
@@ -19,6 +19,9 @@ class School(Cog):
 
     @school.command(name="검색", description="학교를 검색합니다.")
     async def search(self, ctx: ApplicationContext, school_name: Option(str, description="학교 이름")):
+        if not await is_registered(ctx.user.id, db=self.bot.db):
+            await ctx.respond("이걸 사용할려면 내옆에 있는 코끼리 친구한테 소개시켜줘야해! `/가입` 명령어를 사용해봐!", ephemeral=True)
+            return
         try:
             schools = await self.bot.neis.schoolInfo(SCHUL_NM=school_name)
             embed = school_embed(schools, 0)
@@ -33,6 +36,9 @@ class School(Cog):
             grade: Option(int, description="설정할 학년입니다."),
             room: Option(int, description="설정할 반입니다.")
     ):
+        if not await is_registered(ctx.user.id, db=self.bot.db):
+            await ctx.respond("이걸 사용할려면 내옆에 있는 코끼리 친구한테 소개시켜줘야해! `/가입` 명령어를 사용해봐!", ephemeral=True)
+            return
         try:
             schools = await self.bot.neis.schoolInfo(SCHUL_NM=school_name)
             embed = school_embed(schools, 0)
