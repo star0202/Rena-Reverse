@@ -33,6 +33,6 @@ class Database:
     async def delete(self, table: str, value_id: int):
         await self.cursor.execute(f"DELETE FROM {table} WHERE id={value_id}")
 
-    async def execute(self, sql: str) -> tuple[int, str] | None:
+    async def execute(self, sql: str) -> tuple | None:
         await self.cursor.execute(sql)
         return await self.cursor.fetchone()
