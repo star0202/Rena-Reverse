@@ -14,7 +14,7 @@ async def ephemeral_check(
         user_id: Optional[int] = None, data: Optional[tuple[int, str]] = None, db: Optional[Database] = None
 ) -> bool:
     if (user_id and db) or data:
-        data_returned = data or await db.select("User", user_id)
+        data_returned = data or await db.select("User", user_id) if isinstance(db, Database) else TypeError("db is not Database")
         return bool(data_returned[5])
     else:
         raise ValueError("user_id or data is required")

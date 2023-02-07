@@ -1,6 +1,6 @@
 from typing import Optional
 
-from discord import Interaction
+from discord import Interaction, User
 from discord.enums import ButtonStyle
 from discord.ui import View, button
 
@@ -44,7 +44,7 @@ class SelectView(View):
 
     @button(label="확인", style=ButtonStyle.green, emoji="✅")
     async def confirm(self, _, interaction: Interaction):
-        if self.is_setting:
+        if self.is_setting and isinstance(self.db, Database) and isinstance(interaction.user, User):
             await self.db.update("user", "ooe", str(self.schools[self.index].ATPT_OFCDC_SC_CODE), interaction.user.id)
             await self.db.update("user", "school", self.schools[self.index].SD_SCHUL_CODE, interaction.user.id)
             await self.db.update("user", "grade", self.details[0], interaction.user.id)
