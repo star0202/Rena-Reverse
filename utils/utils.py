@@ -15,9 +15,9 @@ def datetime_to_unix(n: datetime) -> int:
 
 
 def help_maker(raw: dict, color: int, is_embed: Optional[bool] = True) -> list[Embed] | list[SelectOption]:
-    embed_list = []
+    obj_list = []
     for title in raw:
-        embed_list.append(
+        obj_list.append(
             Embed(
                 title=title,
                 description=raw[title],
@@ -29,4 +29,4 @@ def help_maker(raw: dict, color: int, is_embed: Optional[bool] = True) -> list[E
                 description=raw[title]
             )
         )
-    return embed_list
+    return obj_list
