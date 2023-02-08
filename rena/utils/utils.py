@@ -15,7 +15,10 @@ async def ephemeral_check(
 ) -> bool:
     if user_id and db:
         data_returned = await db.select("user", user_id)
-        return bool(data_returned[6])
+        if isinstance(data_returned, tuple):
+            return bool(data_returned[6])
+        else:
+            raise ValueError("returned field is not tuple")
     elif data:
         return bool(data[6])
     else:
