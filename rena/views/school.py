@@ -44,7 +44,7 @@ class SelectView(View):
 
     @button(label="확인", style=ButtonStyle.green, emoji="✅")
     async def confirm(self, _, interaction: Interaction):
-        if self.is_setting and isinstance(self.db, Database) and isinstance(interaction.user, User):
+        if self.is_setting and isinstance(self.db, Database) and isinstance(interaction.user, User) and isinstance(self.details, tuple):
             await self.db.update("user", "ooe", str(self.schools[self.index].ATPT_OFCDC_SC_CODE), interaction.user.id)
             await self.db.update("user", "school", self.schools[self.index].SD_SCHUL_CODE, interaction.user.id)
             await self.db.update("user", "grade", self.details[0], interaction.user.id)

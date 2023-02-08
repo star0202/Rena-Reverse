@@ -11,7 +11,7 @@ def private_bool(value: Any) -> str:
 
 
 async def ephemeral_check(
-        user_id: Optional[int] = None, data: Optional[tuple[int, str]] = None, db: Optional[Database] = None
+        user_id: Optional[int] = None, data: Optional[tuple] = None, db: Optional[Database] = None
 ) -> bool:
     if user_id and db:
         data_returned = await db.select("user", user_id)
