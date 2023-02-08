@@ -33,12 +33,14 @@ class Bot(commands.Bot):
         self.logger.info(f"{len(self.extensions)} extensions are completely loaded")
 
     def load_cog(self, cog: str):
-        result = self.load_extension(cog, store=True)[cog]
-        try:
-            if isinstance(result, ExtensionFailed):
-                self.logger.error("".join(format_exception(result)))
-        except Exception as e:
-            self.logger.error(e)
+        ext = self.load_extension(cog, store=True)
+        if isinstance(ext, dict):
+            result = [cog]
+            try:
+                if isinstance(result, ExtensionFailed):
+                    self.logger.error("".join(format_exception(result)))
+            except Exception as e:
+                self.logger.error(e)
 
     def run(self):
         super().run(getenv("TOKEN"))

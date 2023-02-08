@@ -13,8 +13,10 @@ def private_bool(value: Any) -> str:
 async def ephemeral_check(
         user_id: Optional[int] = None, data: Optional[tuple[int, str]] = None, db: Optional[Database] = None
 ) -> bool:
-    if (user_id and db) or data:
-        data_returned = data or await db.select("User", user_id) if isinstance(db, Database) else TypeError("db is not Database")
-        return bool(data_returned[5])
+    if user_id and db:
+        data_returned = await db.select("user", user_id)
+        return bool(data_returned[6])
+    elif data:
+        return bool(data[6])
     else:
         raise ValueError("user_id or data is required")
