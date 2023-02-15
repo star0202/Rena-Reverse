@@ -1,3 +1,5 @@
+## Deprecated
+<details>
 ***
 
 <h1 align="center">
@@ -17,3 +19,4 @@ Rena Reverse | Reverse Engineered version of Team Crescendo 'Rena'
 
 ## 레나 오리지널과의 차이점
  - 대부분의 명령어에서 레나와 다르게 `ephmeral` 옵션이 `private` 옵션을 override 합니다.
+</details>
